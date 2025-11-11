@@ -20,7 +20,8 @@ HurlVim delivers the perfect balance between functionality and minimalism:
 - 🎯 **IDE-like Experience** — All the modern features without the weight
 - 🛠️ **Pre-configured** — Ready to use out of the box
 
-**[IMPORTANT]** HurlVim is 1000x better than bloated online editors while maintaining the soul of Vim/Neovim.
+> [!IMPORTANT]
+> HurlVim is 1000x better than bloated online editors while maintaining the soul of Vim/Neovim.
 
 ---
 
@@ -48,7 +49,8 @@ NVIM_APPNAME=hv nvim
 
 ```
 
-**[NOTE!]** Replace `hv` with your preferred directory/launcher name (e.g., `hurlvim`, `hv`, or `mynvim`).
+> [!NOTE]
+> Replace `hv` with your preferred directory/launcher name (e.g., `hurlvim`, `hv`, or `mynvim`).
 
 ### Setting Up an Alias (Optional but Recommended)
 
@@ -64,7 +66,8 @@ Then reload your shell:
 source ~/.bashrc  # or ~/.zshrc for Zsh users
 ```
 
-**[NOTE!]** After the first launch, plugins will install automatically. This may take a minute — be patient and let the magic happen! ✨
+[!NOTE]
+> After the first launch, plugins will install automatically. This may take a minute — be patient and let the magic happen! ✨
 
 ---
 
@@ -76,7 +79,7 @@ source ~/.bashrc  # or ~/.zshrc for Zsh users
 2. **Plugin Installation** — Wait for automatic plugin installation to complete
 3. **Ready to Code** — Start editing with your new supercharged setup!
 
-[IMPORTANT!]:
+> [!IMPORTANT]
 > The `NVIM_APPNAME` environment variable ensures HurlVim runs independently from your main Neovim configuration. This means you can test HurlVim without affecting your existing setup!
 
 ### Launch Commands
