@@ -1,6 +1,6 @@
 
 # 🚀 HurlVim
-
+> [!Important]
 > **A paradise for lazy developers** — Experience the power of a blazing-fast, offline IDE with the elegance of Vim/Neovim. All the features you love, none of the bloat.
 
 <div align="center">
