@@ -1,15 +1,14 @@
 
-# 🚀 HurlVim
+# 🚀 NvRush
 > [!Important]
 > **A paradise for lazy developers** — Experience the power of a blazing-fast, offline IDE with the elegance of Vim/Neovim. All the features you love, none of the bloat.
 
 <div align="center">
-  <img width="800" alt="HurlVim Preview" src="https://github.com/user-attachments/assets/dca2972c-bca1-48e3-9fea-a5b53666ad76" />
+<img width="800" height="800" alt="NvRush's Logo" src="https://github.com/user-attachments/assets/b96db7fd-6aa8-47e7-a360-71f3b1152ac7" />
 </div>
-
 ---
 
-## ✨ Why HurlVim?
+## ✨ Why NvRush?
 
 HurlVim delivers the perfect balance between functionality and minimalism:
 
