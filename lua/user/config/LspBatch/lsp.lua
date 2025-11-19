@@ -320,10 +320,8 @@ vim.keymap.set("n", "<leader>la", vim.diagnostic.open_float, { desc = "Show Diag
 vim.lsp.enable(vim.tbl_keys(servers))
 
 -- 7. Theme (example: dark, easy-to-read)
-vim.cmd [[
-    colorscheme desert
-    highlight Normal guibg=NONE ctermbg=NONE
-]]
-
-
+-- vim.cmd [[
+--     colorscheme desert
+--     highlight Normal guibg=NONE ctermbg=NONE
+-- ]]
 

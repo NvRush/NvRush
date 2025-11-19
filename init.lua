@@ -83,7 +83,10 @@ safe_require("user.config.LspBatch.luasnip")
 -- ============= ============= ============= ============= 
 safe_require("user.PluginExtensionConfiguration.overseer")
 
-
+-- ============= ============= ============= ============= 
+-- 5. Custom Cmp
+-- ============= ============= ============= ============= 
+safe_require("user.CustomCmp.cmp-gd")
 
 -- ============= ============= ============= ============= ============= 
 -- Don't uncommemt until the above ones behave different

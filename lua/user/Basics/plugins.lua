@@ -431,6 +431,8 @@ spec = {
 
     {"nvzone/showkeys"}, {"stevearc/resession.nvim"}, {"stevearc/overseer.nvim"},
 
+  {"neoclide/coc.nvim", branch = "release", build = "npm build",},
+
 
 -- ==============================================================
 -- Configuration for Lazy nvim Keep Plugins above this Comment !
