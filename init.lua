@@ -18,9 +18,9 @@ local function safe_require(module)
     return result
 end
 
--- ============= ============= ============= ============= 
+-- ============= ============= ============= =============
 -- 1. BASIC SETTINGS CORE
--- ============= ============= ============= ============= 
+-- ============= ============= ============= =============
 
 safe_require("user.Basics.env")
 safe_require("user.Basics.options")
@@ -29,9 +29,9 @@ safe_require("user.Basics.autoreload")
 safe_require("user.Basics.plugins")
 safe_require("user.Basics.utilities")
 
--- ============= ============= ============= ============= 
+-- ============= ============= ============= =============
 --  2. UI CORE (Overridden)
--- ============= ============= ============= ============= 
+-- ============= ============= ============= =============
 
 safe_require("user.UI.custom_treesitters")
 safe_require("user.UI.dashboard")
@@ -53,9 +53,9 @@ safe_require("user.UI.theme")
 safe_require("user.UI.colors")
 safe_require("user.UI.SetGlobalTheme")
 
--- ============= ============= ============= ============= 
--- 3. BATCH PLUGIN CORE 
--- ============= ============= ============= ============= 
+-- ============= ============= ============= =============
+-- 3. BATCH PLUGIN CORE
+-- ============= ============= ============= =============
 
 safe_require("user.config.LspBatch.lsp")
 safe_require("user.config.LspBatch.cmp")
@@ -80,21 +80,27 @@ safe_require("user.config.IdeBatch.surround")
 safe_require("user.config.IdeBatch.oil")
 safe_require("user.config.LspBatch.luasnip")
 
--- ============= ============= ============= ============= 
+-- ============= ============= ============= =============
 -- 4. PluginExtensionConfiguration
--- ============= ============= ============= ============= 
+-- ============= ============= ============= =============
 safe_require("user.PluginExtensionConfiguration.overseer")
 
--- ============= ============= ============= ============= 
--- 5. Custom Cmp 
--- ============= ============= ============= ============= 
+-- ============= ============= ============= =============
+-- 6. Custom Cmp
+-- ============= ============= ============= =============
+safe_require("user.Mini.mini_surround")
+
+-- ============= ============= ============= =============
+-- 6. Custom Cmp
+-- ============= ============= ============= =============
 
 -- NOTE: Please uncomment this only when working on Gdscript !
 -- NOTE: IS CURRENTLY IN NON-PRODUCTION READY BUT WORKING STATE !
+
 -- safe_require("user.CustomCmp.cmp-gd")
 
 
--- ============= ============= ============= ============= ============= 
+-- ============= ============= ============= ============= =============
 -- Don't uncommemt until the above ones behave different
 -- ============= ============= ============= ============= =============
 
@@ -109,9 +115,8 @@ safe_require("user.PluginExtensionConfiguration.overseer")
 -- safe_require("user.UI.colors")
 -- safe_require("user.UI.SetGlobalTheme")
 
--- ============= ============= ============= ============= ============= 
+-- ============= ============= ============= ============= =============
 -- KEEP EVERY FILE CALLL BEHIND THIS !!!
--- ============= ============= ============= ============= ============= 
+-- ============= ============= ============= ============= =============
 
 vim.cmd.colorscheme("gruvbox")
-
