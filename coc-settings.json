@@ -1,7 +1,0 @@
-{
-  "gdscript.port": 1024,
-  "suggest.enablePreselect": true,
-  "diagnostic.virtualText": true,
-  "diagnostic.enable": true,
-  "coc.preferences.formatOnSaveFiletypes": ["gdscript"]
-}
