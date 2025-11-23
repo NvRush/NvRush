@@ -219,7 +219,7 @@ require("lazy").setup({
 
                 -- 🔹 Performance
                 { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-
+                { "nvim-telescope/telescope-fzy-native.nvim" },
                 -- 🔹 Extra pickers
                 "nvim-telescope/telescope-file-browser.nvim",
                 "nvim-telescope/telescope-project.nvim",

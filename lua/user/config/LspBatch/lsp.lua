@@ -26,17 +26,17 @@ end
 local cmp = require("cmp")
 
 cmp.setup({
-  window = {
-    documentation = cmp.config.disable,  -- disables the side floating doc box
-  },
-  mapping = cmp.mapping.preset.insert({
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-  }),
-  sources = cmp.config.sources({
-    { name = "nvim_lsp" },
-    { name = "buffer" },
-    { name = "path" },
-  })
+    window = {
+        documentation = cmp.config.disable, -- disables the side floating doc box
+    },
+    mapping = cmp.mapping.preset.insert({
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "buffer" },
+        { name = "path" },
+    })
 })
 -- ===============================
 -- 2. Capabilities (for cmp-nvim-lsp)
@@ -68,62 +68,62 @@ local servers = {
     -- Web
     html          = { cmd = { "vscode-html-language-server", "--stdio" }, filetypes = { "html" } },
     cssls         = { cmd = { "vscode-css-language-server", "--stdio" }, filetypes = { "css", "scss", "less" } },
---    tsserver      = { cmd = { "typescript-language-server", "--stdio" }, filetypes = { "javascript", "typescript" },},
---    eslint        = { cmd = { "vscode-eslint-language-server", "--stdio" }, filetypes = { "javascript", }},
---    biome = { cmd = { "biome", "lsp-proxy" }, filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "jsonc" },},
-vtsls = {
-  cmd = { "vtsls", "--stdio" },
-  filetypes = {
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-  },
-  -- This makes it work for ANY JS/TS file, even standalone ones
-  settings = {
-    vtsls = {
-      autoUseWorkspaceTsdk = true,
-      experimental = {
-        completion = {
-          enableServerSideFuzzyMatch = true,
+    --    tsserver      = { cmd = { "typescript-language-server", "--stdio" }, filetypes = { "javascript", "typescript" },},
+    --    eslint        = { cmd = { "vscode-eslint-language-server", "--stdio" }, filetypes = { "javascript", }},
+    --    biome = { cmd = { "biome", "lsp-proxy" }, filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "jsonc" },},
+    vtsls         = {
+        cmd = { "vtsls", "--stdio" },
+        filetypes = {
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
         },
-      },
+        -- This makes it work for ANY JS/TS file, even standalone ones
+        settings = {
+            vtsls = {
+                autoUseWorkspaceTsdk = true,
+                experimental = {
+                    completion = {
+                        enableServerSideFuzzyMatch = true,
+                    },
+                },
+            },
+            typescript = {
+                updateImportsOnFileMove = { enabled = "always" },
+                suggest = {
+                    completeFunctionCalls = true,
+                },
+                inlayHints = {
+                    parameterNames = { enabled = "literals" },
+                    parameterTypes = { enabled = true },
+                    variableTypes = { enabled = true },
+                    propertyDeclarationTypes = { enabled = true },
+                    functionLikeReturnTypes = { enabled = true },
+                    enumMemberValues = { enabled = true },
+                },
+            },
+            javascript = {
+                updateImportsOnFileMove = { enabled = "always" },
+                suggest = {
+                    completeFunctionCalls = true,
+                },
+                inlayHints = {
+                    parameterNames = { enabled = "literals" },
+                    parameterTypes = { enabled = true },
+                    variableTypes = { enabled = true },
+                    propertyDeclarationTypes = { enabled = true },
+                    functionLikeReturnTypes = { enabled = true },
+                    enumMemberValues = { enabled = true },
+                },
+            },
+        },
+        flags = {
+            debounce_text_changes = 50,
+        },
     },
-    typescript = {
-      updateImportsOnFileMove = { enabled = "always" },
-      suggest = {
-        completeFunctionCalls = true,
-      },
-      inlayHints = {
-        parameterNames = { enabled = "literals" },
-        parameterTypes = { enabled = true },
-        variableTypes = { enabled = true },
-        propertyDeclarationTypes = { enabled = true },
-        functionLikeReturnTypes = { enabled = true },
-        enumMemberValues = { enabled = true },
-      },
-    },
-    javascript = {
-      updateImportsOnFileMove = { enabled = "always" },
-      suggest = {
-        completeFunctionCalls = true,
-      },
-      inlayHints = {
-        parameterNames = { enabled = "literals" },
-        parameterTypes = { enabled = true },
-        variableTypes = { enabled = true },
-        propertyDeclarationTypes = { enabled = true },
-        functionLikeReturnTypes = { enabled = true },
-        enumMemberValues = { enabled = true },
-      },
-    },
-  },
-  flags = {
-    debounce_text_changes = 50,
-  },
-},
 
-   -- System
+    -- System
     clangd        = { cmd = { "clangd", "--background-index" }, filetypes = { "c", "cpp" } },
     asm_lsp       = { cmd = { "asm-lsp" }, filetypes = { "asm", "s" } },
     cmake         = { cmd = { "cmake-language-server" }, filetypes = { "cmake" } },
@@ -132,126 +132,126 @@ vtsls = {
     -- Scripting
     pyright       = { cmd = { "pyright-langserver", "--stdio" }, filetypes = { "python" } },
 
-   --  lua_ls        = {
-   --      cmd = { "lua-language-server" },
-   --      filetypes = { "lua" },
-   --      handlers = {
-   --          ["%progress"] = function() end,
-   --      },
-   --      settings = {
-   --          Lua = {
-   --              runtime = { version = "Lua 5.4" },
-   --              diagnostics = { globals = { "vim" } },
-   --              workspace = {
-   --                  checkThirdParty = false,
-   --                  library = vim.api.nvim_get_runtime_file("", true),
-   --              },
-   --              telemetry = { enable = false },
-   --          },
-   --      },
-   --  },
-   lua_ls = {
-  cmd = { "lua-language-server" },
-  filetypes = { "lua" },
-  handlers = {
-    ["$/progress"] = function() end,
-  },
-  settings = {
-    Lua = {
-      runtime = {
-        version = "Lua 5.4",
-      },
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        checkThirdParty = false,
-        library = { vim.env.VIMRUNTIME .. "/lua" },
-        -- reduces workspace scanning massively
-        maxPreload = 2000,
-        preloadFileSize = 500,
-      },
-      telemetry = { enable = false },
+    --  lua_ls        = {
+    --      cmd = { "lua-language-server" },
+    --      filetypes = { "lua" },
+    --      handlers = {
+    --          ["%progress"] = function() end,
+    --      },
+    --      settings = {
+    --          Lua = {
+    --              runtime = { version = "Lua 5.4" },
+    --              diagnostics = { globals = { "vim" } },
+    --              workspace = {
+    --                  checkThirdParty = false,
+    --                  library = vim.api.nvim_get_runtime_file("", true),
+    --              },
+    --              telemetry = { enable = false },
+    --          },
+    --      },
+    --  },
+    lua_ls        = {
+        cmd = { "lua-language-server" },
+        filetypes = { "lua" },
+        handlers = {
+            ["$/progress"] = function() end,
+        },
+        settings = {
+            Lua = {
+                runtime = {
+                    version = "Lua 5.4",
+                },
+                diagnostics = {
+                    globals = { "vim" },
+                },
+                workspace = {
+                    checkThirdParty = false,
+                    library = { vim.env.VIMRUNTIME .. "/lua" },
+                    -- reduces workspace scanning massively
+                    maxPreload = 2000,
+                    preloadFileSize = 500,
+                },
+                telemetry = { enable = false },
+            },
+        },
     },
-  },
-},
 
     -- Extra Chad Power
     rust_analyzer = { cmd = { "rust-analyzer" }, filetypes = { "rust" } },
     -- gopls         = { cmd = { "gopls" }, filetypes = { "go" } },
 
     -- Golang Lsp
-    gopls = {
-  cmd = { "gopls" },
-  filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  settings = {
-    gopls = {
-      -- PERFORMANCE: Critical settings
-      analyses = {
-        unusedparams = true,
-        shadow = false,  -- Disable expensive analysis
-        unusedwrite = false,
-        useany = false,
-      },
-      
-      -- Reduce completion load
-      completeUnimported = true,
-      completionBudget = "100ms",  -- Cap completion time
-      
-      -- Matcher settings
-      matcher = "Fuzzy",
-      deepCompletion = false,  -- CRITICAL: Disable deep search
-      
-      -- Reduce semantic token load
-      semanticTokens = false,
-      
-      -- Hints (disable if still slow)
-      hints = {
-        assignVariableTypes = false,
-        compositeLiteralFields = false,
-        compositeLiteralTypes = false,
-        constantValues = false,
-        functionTypeParameters = false,
-        parameterNames = false,
-        rangeVariableTypes = false,
-      },
-      
-      -- Staticcheck can be slow
-      staticcheck = false,
-      
-      -- Codelens overhead
-      codelenses = {
-        generate = false,
-        gc_details = false,
-        test = false,
-        tidy = false,
-      },
+    gopls         = {
+        cmd = { "gopls" },
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        settings = {
+            gopls = {
+                -- PERFORMANCE: Critical settings
+                analyses = {
+                    unusedparams = true,
+                    shadow = false, -- Disable expensive analysis
+                    unusedwrite = false,
+                    useany = false,
+                },
+
+                -- Reduce completion load
+                completeUnimported = true,
+                completionBudget = "100ms", -- Cap completion time
+
+                -- Matcher settings
+                matcher = "Fuzzy",
+                deepCompletion = false, -- CRITICAL: Disable deep search
+
+                -- Reduce semantic token load
+                semanticTokens = false,
+
+                -- Hints (disable if still slow)
+                hints = {
+                    assignVariableTypes = false,
+                    compositeLiteralFields = false,
+                    compositeLiteralTypes = false,
+                    constantValues = false,
+                    functionTypeParameters = false,
+                    parameterNames = false,
+                    rangeVariableTypes = false,
+                },
+
+                -- Staticcheck can be slow
+                staticcheck = false,
+
+                -- Codelens overhead
+                codelenses = {
+                    generate = false,
+                    gc_details = false,
+                    test = false,
+                    tidy = false,
+                },
+            },
+        },
     },
-  },
-},
     phpactor      = { cmd = { "phpactor", "language-server" }, filetypes = { "php" } },
 
--- ===============================
--- NOTE: Better to write your configs behind this Note! 
--- Plese Do add comma (,) after your configuration !
--- Don't damage configuration if they are working !
--- ===============================
+    -- ===============================
+    -- NOTE: Better to write your configs behind this Note!
+    -- Plese Do add comma (,) after your configuration !
+    -- Don't damage configuration if they are working !
+    -- ===============================
 
 
 
-    -- WARN: Do this yourself as per your Godot Editor 
+    -- WARN: Do this yourself as per your Godot Editor
     GDScript = {
-  cmd = { "nc", "127.0.0.1", "6008" },
-  filetypes = { "gd", "gdscript" },
-  root_dir = function()
-      return vim.fn.expand("$HOME/Langs/Gdscript")
-  end,
+        cmd = { "nc", "127.0.0.1", "6008" },
+        filetypes = { "gd", "gdscript" },
+        root_dir = function()
+            return vim.fn.expand("$HOME/Langs/Gdscript")
+        end,
 
-}
-}-- NOTE: STAY BEHIND THIS BRACKET FOR SERVER CONFIGURATIONS !
+    }
+} -- NOTE: STAY BEHIND THIS BRACKET FOR SERVER CONFIGURATIONS !
 
 -- ===============================
--- Hover Text :WARN: Do at your own Risk 
+-- Hover Text :WARN: Do at your own Risk
 -- ===============================
 
 -- -- Disable automatic hover in insert mode
@@ -288,21 +288,21 @@ vtsls = {
 -- Disable automatic signature help
 -- ===============================
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-  vim.lsp.handlers.signature_help, {
-    border = "rounded",
-    silent = true,
-    focusable = false,
-  }
+    vim.lsp.handlers.signature_help, {
+        border = "rounded",
+        silent = true,
+        focusable = false,
+    }
 )
 
 -- Remove automatic triggering characters
 vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client and client.server_capabilities.signatureHelpProvider then
-      client.server_capabilities.signatureHelpProvider.triggerCharacters = {}
-    end
-  end,
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client and client.server_capabilities.signatureHelpProvider then
+            client.server_capabilities.signatureHelpProvider.triggerCharacters = {}
+        end
+    end,
 })
 
 -- Add manual keybind (optional - trigger with <C-k> in insert mode)
@@ -324,4 +324,3 @@ vim.lsp.enable(vim.tbl_keys(servers))
 --     colorscheme desert
 --     highlight Normal guibg=NONE ctermbg=NONE
 -- ]]
-
