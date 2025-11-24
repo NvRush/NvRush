@@ -120,4 +120,4 @@ safe_require("user.PluginExtensionConfiguration.overseer")
 -- KEEP EVERY FILE CALLL BEHIND THIS !!!
 -- ============= ============= ============= ============= =============
 
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("poimandres")

@@ -448,7 +448,14 @@ require("lazy").setup({
                 version = "*",
             },
 
-
+            { "rose-pine/neovim",                name = "rose-pine" },
+            { "sainnhe/everforest",              name = "everforest" },
+            { "sainnhe/gruvbox-material",        name = "gruvbox-material-sainnhe" },
+            { "sainnhe/sonokai",                 name = "sonokai-sainnhe" },
+            { "tiagovla/tokyodark.nvim",         name = "tokyodark-tiagovla" },
+            { "savq/melange-nvim",               name = "melange-warm-savq" },
+            { "rmehri01/onenord.nvim",           name = "onenord-rmehri01" },
+            { "olivercederborg/poimandres.nvim", name = "poimanders.nvim" },
             -- ==============================================================
             -- Configuration for Lazy nvim Keep Plugins above this Comment !
             -- ==============================================================
