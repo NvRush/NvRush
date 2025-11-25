@@ -1,12 +1,40 @@
-# nvrush
+# 🚀 nvrush
 
-<a href="https://dotfyle.com/nvrush/nvrush"><img src="https://dotfyle.com/nvrush/nvrush/badges/plugins?style=flat" /></a>
-<a href="https://dotfyle.com/nvrush/nvrush"><img src="https://dotfyle.com/nvrush/nvrush/badges/leaderkey?style=flat" /></a>
-<a href="https://dotfyle.com/nvrush/nvrush"><img src="https://dotfyle.com/nvrush/nvrush/badges/plugin-manager?style=flat" /></a>
-![Neovim](https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white)
-![GitHub issues](https://img.shields.io/github/issues/username/repo)
-![GitHub forks](https://img.shields.io/github/forks/username/repo)
-![GitHub stars](https://img.shields.io/github/stars/username/repo)
+<p align="center">
+  <a href="https://dotfyle.com/nvrush/nvrush">
+    <img src="https://dotfyle.com/nvrush/nvrush/badges/plugins?style=for-the-badge&colorA=1e1e2e&colorB=ff79c6" alt="Plugins">
+  </a>
+  <a href="https://dotfyle.com/nvrush/nvrush">
+    <img src="https://dotfyle.com/nvrush/nvrush/badges/leaderkey?style=for-the-badge&colorA=1e1e2e&colorB=8be9fd" alt="Leader Key">
+  </a>
+  <a href="https://dotfyle.com/nvrush/nvrush">
+    <img src="https://dotfyle.com/nvrush/nvrush/badges/plugin-manager?style=for-the-badge&colorA=1e1e2e&colorB=50fa7b" alt="Plugin Manager">
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Neovim-0.10+-ff5555?style=for-the-badge&logo=neovim&logoColor=white&color=282a36&labelColor=282a36" alt="Neovim">
+  <img src="https://img.shields.io/badge/Lua-5.1+-8be9fd?style=for-the-badge&logo=lua&logoColor=white&color=282a36&labelColor=282a36" alt="Lua">
+  <img src="https://img.shields.io/badge/Lazy.nvim-Plugin_Manager-f1fa8c?style=for-the-badge&logo=neovim&logoColor=282a36&color=282a36&labelColor=282a36" alt="Lazy">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/NvChad-Inspired-ff79c6?style=for-the-badge&logo=neovim&logoColor=white&color=282a36&labelColor=282a36" alt="NvChad">
+  <img src="https://img.shields.io/badge/LunarVim-Compatible-8be9fd?style=for-the-badge&logo=vim&logoColor=white&color=282a36&labelColor=282a36" alt="LunarVim">
+  <img src="https://img.shields.io/badge/LazyVim-Structure-50fa7b?style=for-the-badge&logo=neovim&logoColor=282a36&color=282a36&labelColor=282a36" alt="LazyVim">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-ffb86c?style=for-the-badge&color=282a36&labelColor=282a36" alt="License">
+  <img src="https://img.shields.io/github/stars/nvrush/nvrush?style=for-the-badge&color=ff79c6&labelColor=282a36" alt="Stars">
+  <img src="https://img.shields.io/github/forks/nvrush/nvrush?style=for-the-badge&color=8be9fd&labelColor=282a36" alt="Forks">
+  <img src="https://img.shields.io/github/issues/nvrush/nvrush?style=for-the-badge&color=50fa7b&labelColor=282a36" alt="Issues">
+</p>
+
+<p align="center">
+  <i>⚡ A blazingly fast, modern Neovim configuration inspired by NvChad, LunarVim & LazyVim</i>
+</p>
+
 
 [![Dotfyle Stats](https://dotfyle.com/plugins/<nvrush>/<nvrush>/shield)](https://dotfyle.com/plugins/<nvrush>/<nvrush>)
 ![Screenshot_20251125_072755](https://github.com/user-attachments/assets/87cdf801-daf6-4f82-8ae3-a89199a1566c)
