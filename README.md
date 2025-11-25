@@ -18,16 +18,8 @@
 </p>
 
 
-## 🎥 Demo
+![NvRush](https://github.com/user-attachments/assets/34c5e70c-ba4c-4852-843b-73a1d8a57398)
 
-
-div align="center">
-  <a href="https://nvrush.github.io/nvrush/demo.html">
-    <img src="./assets/thumbnail.png" alt="Watch Demo Video">
-    <br>
-    ▶️ <b>Watch Demo Video</b>
-  </a>
-</div>
 
 ![Screenshot_20251125_072755](https://github.com/user-attachments/assets/b0ad4069-4c9e-40f7-a000-423205d2420e)
 
