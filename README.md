@@ -20,14 +20,17 @@
 
 ## 🎥 Demo
 
-![Screenshot_20251125_072755](https://github.com/user-attachments/assets/b0ad4069-4c9e-40f7-a000-423205d2420e)
+<div align="center">
 
-
-div align="center">
-
-https://github.com/user-attachments/assets/2bf4fef8-e6bf-496b-9b17-52e9b3fd31de
+<video controls autoplay muted loop style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+  <source src="https://raw.githubusercontent.com/username/repo/main/assets/video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 </div>
+
+
+![Screenshot_20251125_072755](https://github.com/user-attachments/assets/b0ad4069-4c9e-40f7-a000-423205d2420e)
 
 
 [![Dotfyle Stats](https://dotfyle.com/plugins/<nvrush>/<nvrush>/shield)](https://dotfyle.com/plugins/<nvrush>/<nvrush>)
