@@ -17,6 +17,9 @@ Better Motions & many lazy keybindings with which-key.
 Is mostly Zen Mode like.
 Is MIT licensed & you are free to do all edits. 
 
+> [!IMPORTANT]
+> Space key is the default leader 
+
 ## Open-Selling Point
 Full supoort for most major themes & you will get ~85 themes.
 Daily & Manually maintained with the help of Claude & Chatgpt.
@@ -30,13 +33,13 @@ Preconfigured lsps and easier tabular workflow.
 Major Completion engine support.
 
 ## Open-Weakness Point
-1. Since Codeotus is an Opensource IDE or Preconfigured Terminal Integrated space you may find it to have many features un-available if you are coming from an IDE , that is beacuse Codeotus is aimed to enhance Neovim's features via .lua configuration files & most features are just too complex for a Solo Devloper to add. However I am kept on trying to add everything that can enhace Neovim but I have already given a lot by spending not just weeks but months on this! Don't worry Neovim do already have most features & I am sure you probably be never mastering the whole command line in this life. Just enjoy!
+1. Since Codeotus is an Open-source IDE or Preconfigured Terminal Integrated space you may find it to have many features un-available if you are coming from an IDE , that is because Codeotus is aimed to enhance Neovim's features via .lua configuration files & most features are just too complex for a Solo Developer to add. However I am kept on trying to add everything that can enhance Neovim but I have already given a lot by spending not just weeks but months on this! Don't worry Neovim do already have most features & I am sure you probably be never mastering the whole command line in this life. Just enjoy!
 
-2. Codeotus have no Human contributors except me & only LLMs based contributors like Calude & Chat-gpt hence some features might take 1-2 days to popup.
+2. Codeotus has no Human contributors except me & only Ai contributors like Claude & Chat-Gpt hence some features might take 1-2 days to pop-up.
 
 3. No version control on github - you will only get what I feels good to git.
 
-4. Since it is a bigger Configured Integrated Enviroment (CIE) hence lerning curves could be bigger for intial phase until & unless you get used to Leader Key Bindings.
+4. Since it is a bigger Configured Integrated Environment (CIE) hence learning curves could be bigger for initial phase until & unless you get used to Leader-Key-Bindings.
 
 ##  Requirements
 
@@ -45,13 +48,14 @@ Major Completion engine support.
 3. ~200 MB of disk space + Bandwidth for initial setup
 
 ## Hots 
-blink-cmp.nvim
+1. Fixed Bloated unwanted plugins
+2. Better nvim-cmp default support for Codeotus
+3. blink-cmp for buffer + nvim-cmp support for command line
 
 ## ToDo
-1. Fix Bloated unwanted plugins 
-2  Fix Keymappings
-3. Add Workspace
- 
+1. Fix Keymappings
+2. Add Workspace
+
 ##  Installation
 
 **Clone and install:**
