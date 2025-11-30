@@ -19,16 +19,26 @@ local function safe_require(module)
 end
 
 -- ============= ============= ============= =============
+-- Colorschemes
+-- ============= ============= ============= =============
+safe_require("user.Colorschemes.Onenord")
+
+
+
+
+
+
+-- ============= ============= ============= =============
 -- 1. BASIC SETTINGS CORE
 -- ============= ============= ============= =============
 safe_require("user.UI.NoMoreItalics")
-safe_require("user.Basics.env")
-safe_require("user.Basics.options")
-safe_require("user.Basics.mappings")
-safe_require("user.Basics.autoreload")
-safe_require("user.Basics.plugins")
-safe_require("user.Basics.utilities")
-safe_require("user.Basics.mason")
+safe_require("user.System.env")
+safe_require("user.System.options")
+safe_require("user.System.mappings")
+safe_require("user.System.autoreload")
+safe_require("user.System.plugins")
+safe_require("user.System.utilities")
+safe_require("user.System.mason")
 
 -- ============= ============= ============= =============
 --  2. UI CORE (Overridden)
@@ -45,7 +55,7 @@ safe_require("user.UI.statusline")
 safe_require("user.UI.dressing")
 safe_require("user.UI.windows")
 -- safe_require("user.UI.snacks") backup only for mini.notify
-safe_require("user.UI.bold_text")
+-- safe_require("user.UI.bold_text")
 safe_require("user.Overridder.Caller")
 safe_require("user.Overridder.gruvbox_ts")
 safe_require("user.UI.theme")
@@ -152,4 +162,4 @@ vim.g.gruvbox_material_transparent_background = 0 -- set to 1 for transparent
 -- Load the colorscheme at last !
 -- NOTE: SGT colorsheme_name will override
 -- ============= ============= ============= ============= =============
-vim.cmd.colorscheme("onenord")
+vim.cmd.colorscheme("onedarker")

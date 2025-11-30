@@ -143,7 +143,7 @@ require("lazy").setup({
             opts = {},
             -- Optional dependencies
             dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-            lazy = true,
+            lazy = false,
             version = "v2.15.0",
         },
         -- =========================
@@ -173,6 +173,8 @@ require("lazy").setup({
         { "luisiacc/gruvbox-baby",           name = "gruvbox-baby" },
         { "ribru17/bamboo.nvim",             name = "bamboo" },
         { "Biscuit-Theme/nvim",              name = "biscuit" },
+        { "olimorris/onedarkpro.nvim",       priority = 1000, },
+
 
         -- NOTE: STAY BEHIND THIS !
     },               -- NOTE: Closing brace for spec table!!!!!!
