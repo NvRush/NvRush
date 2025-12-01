@@ -1,274 +1,327 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 
--- State for toggling documentation
-local docs_enabled = false
+-- 🌈 Modern, Beautiful, Bigger Icons (Nerd Font v3)
+local kind_icons = {
+    Text          = "",
+    Method        = "",
+    Function      = "󰈸",
+    Constructor   = "",
+    Field         = "󰈹",
+    Variable      = "",
+    Class         = "󰠖",
+    Interface     = "󰍲",
+    Module        = "",
+    Property      = "󱍀",
+    Unit          = "",
+    Value         = "󱄑",
+    Enum          = "󱃔",
+    Keyword       = "󰌽",
+    Snippet       = "󱥬",
+    Color         = "󰢵",
+    File          = "󰈙",
+    Reference     = "",
+    Folder        = "",
+    EnumMember    = "",
+    Constant      = "󰬌",
+    Struct        = "",
+    Event         = "󰃭",
+    Operator      = "󰦓",
+    TypeParameter = "󱃹",
+}
 
--- Function to toggle documentation
-local function toggle_docs()
-    docs_enabled = not docs_enabled
-    if docs_enabled then
-        vim.notify("nvim-cmp: Documentation enabled", vim.log.levels.INFO)
-    else
-        vim.notify("nvim-cmp: Documentation disabled", vim.log.levels.INFO)
-        -- Close any open documentation windows
-        cmp.close()
-    end
-end
-
--- Set up the keymap for toggling docs
-vim.keymap.set('n', '<leader>utc', toggle_docs, { desc = 'Toggle completion docs' })
+-- ✨ Smart, compact, human-friendly labels
+local kind_labels = {
+    Text          = "txt",
+    Method        = "meth",
+    Function      = "fn",
+    Constructor   = "contor",
+    Field         = "field",
+    Variable      = "var",
+    Class         = "class",
+    Interface     = "iFace",
+    Module        = "mod",
+    Property      = "propy",
+    Unit          = "unit",
+    Value         = "val",
+    Enum          = "enum",
+    Keyword       = "key",
+    Snippet       = "snip",
+    Color         = "color",
+    File          = "file",
+    Reference     = "ref",
+    Folder        = "dir",
+    EnumMember    = "e.mem",
+    Constant      = "const.",
+    Struct        = "struct",
+    Event         = "eve",
+    Operator      = "optr",
+    TypeParameter = "tyPram",
+}
 
 cmp.setup({
-    -- No preselection
-    preselect = cmp.PreselectMode.None,
-
-    completion = {
-        -- Trigger on every character change in insert mode
-        autocomplete = {
-            cmp.TriggerEvent.TextChanged,
-            cmp.TriggerEvent.InsertEnter,
-        },
-        -- Minimum 2 characters (blink-cmp default)
-        keyword_length = 2,
-        completeopt = 'menu,menuone,noinsert,noselect',
+    -- ❌ NO GHOST TEXT (banned forever!)
+    experimental = {
+        ghost_text = false,
     },
 
-    -- Snippet expansion
+    -- 🎨 Completion Window Styling - 4 ITEMS FOR TEXT EDITOR
+    window = {
+        completion = {
+            border = "rounded",
+            winhighlight = "Normal:Pmenu,FloatBorder:PmenuBorder,CursorLine:PmenuSel,Search:None",
+            scrollbar = true,
+            col_offset = -3,
+            side_padding = 1,
+        },
+        documentation = cmp.config.disable,
+    },
+
+    -- 📋 Formatting (Icons + Short Labels + Abbreviations)
+    formatting = {
+        fields = { "kind", "abbr", "menu" },
+        format = function(entry, vim_item)
+            vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], kind_labels[vim_item.kind])
+
+            if #vim_item.abbr > 30 then
+                vim_item.abbr = vim_item.abbr:sub(1, 27) .. "..."
+            end
+
+            vim_item.menu = ({
+                nvim_lsp = "[LSP]",
+                luasnip = "[Snip]",
+                buffer = "[Buf]",
+                path = "[Path]",
+                nvim_lua = "[Lua]",
+            })[entry.source.name]
+
+            return vim_item
+        end,
+    },
+
+    -- ⌨️ Snippet Engine
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
         end,
     },
 
-    -- Window styling
-    window = {
-        completion = {
-            border = 'rounded',
-            winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
-            col_offset = -3,
-            side_padding = 1,
-            scrollbar = true, -- Enable scrollbar
-            max_height = 5,   -- Show 5 items at once
-        },
-        documentation = {
-            border = 'rounded',
-            winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu',
-            max_height = 15,
-            max_width = 80,
-        },
-    },
-
-    -- Formatting: LSP first, show kind icons and source
-    formatting = {
-        fields = { 'kind', 'abbr', 'menu' },
-        format = function(entry, vim_item)
-            -- Beautiful Nerd Font icons for each completion kind
-            local kind_icons = {
-                Text          = '󰉿',
-                Method        = '󰆧',
-                Function      = '󰊕',
-                Constructor   = '󰡱',
-                Field         = '󰜢',
-                Variable      = '󰀫',
-                Class         = '󰠱',
-                Interface     = '󰜰',
-                Module        = '󰏗',
-                Property      = '󰜢',
-                Unit          = '󰑭',
-                Value         = '󰎠',
-                Enum          = '󰦨',
-                Keyword       = '󰌋',
-                Snippet       = '󰅱',
-                Color         = '󰏌',
-                File          = '󰈙',
-                Reference     = '󰈇',
-                Folder        = '󰉋',
-                EnumMember    = '󰦨',
-                Constant      = '󰏿',
-                Struct        = '󰙅',
-                Event         = '󱐋',
-                Operator      = '󰆕',
-                TypeParameter = '󰊄',
-            }
-            -- Add beautiful icon before the item
-            vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind] or '', vim_item.kind)
-
-            local source_icons = {
-                nvim_lsp = '󰒓 ', -- LSP
-                luasnip  = '󰩫 ', -- Snippets
-                buffer   = '󰦪 ', -- Buffer / file text
-                path     = '󰉋 ', -- File / folder path
-                cmdline  = ' ', -- Command line
-            }
-            vim_item.menu = source_icons[entry.source.name] or ''
-
-            return vim_item
-        end,
-    },
-
-    -- View settings
-    view = {
-        entries = { name = 'custom', selection_order = 'near_cursor' },
-        docs = {
-            auto_open = false, -- Docs disabled by default
-        },
-    },
-
-    -- Ghost text
-    experimental = {
-        ghost_text = false,
-        -- ghost_text = {
-        --     hl_group = 'Comment',
-        -- },
-    },
-
-    -- Performance optimization
-    performance = {
-        debounce = 50,          -- Fast debounce (50ms)
-        throttle = 30,          -- Fast throttle (30ms)
-        fetching_timeout = 200, -- Quick timeout
-        max_view_entries = 200, -- Allow more items for scrolling
-    },
-
-    -- Sources: LSP prioritized
+    -- 🎯 Completion Sources
     sources = cmp.config.sources({
-        { name = 'nvim_lsp', priority = 1000, max_item_count = 200 },
-        { name = 'luasnip',  priority = 750,  max_item_count = 200 },
-    }, {
-        { name = 'buffer', priority = 500, max_item_count = 200 },
-        { name = 'path',   priority = 250, max_item_count = 200 },
+        { name = 'nvim_lsp', priority = 1000 },
+        { name = 'luasnip',  priority = 750 },
+        { name = 'buffer',   priority = 500, keyword_length = 3 },
+        { name = 'path',     priority = 250 },
     }),
 
-    -- Sorting
-    sorting = {
-        priority_weight = 2,
-        comparators = {
-            cmp.config.compare.offset,
-            cmp.config.compare.exact,
-            cmp.config.compare.score,
-            cmp.config.compare.recently_used,
-            cmp.config.compare.locality,
-            cmp.config.compare.kind,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.length,
-            cmp.config.compare.order,
-        },
-    },
-
-    -- Keymaps
+    -- ⌨️ Keymaps for INSERT MODE (arrow keys + enter to select)
     mapping = cmp.mapping.preset.insert({
-        -- Navigate with Up/Down
-        ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+        -- Arrow keys for navigation
         ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 
-        -- Navigate with Tab/Shift-Tab
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-            else
-                fallback()
-            end
-        end, { 'i', 's' }),
-
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            else
-                fallback()
-            end
-        end, { 'i', 's' }),
-
-        -- Confirm with Enter
-        ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Insert,
-            select = false, -- Only confirm explicitly selected items
-        }),
-
-        -- Scroll docs (if manually opened)
+        -- Scroll through many items
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
 
-        -- Scroll through completion items
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        -- ENTER or TAB to select and insert
+        ['<CR>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = false
+        }),
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.confirm({
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    select = false
+                })
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
 
-        -- Abort completion
+        -- ESC or Ctrl+e to close
+        ['<Esc>'] = cmp.mapping.abort(),
         ['<C-e>'] = cmp.mapping.abort(),
+
+        -- Ctrl+Space to manually trigger
+        ['<C-Space>'] = cmp.mapping.complete(),
     }),
 
-    -- Override documentation view function to respect toggle
-    view_override = function(self, view)
-        if view == 'docs' and not docs_enabled then
-            return false
-        end
-        return true
+    -- ⚡ Performance
+    performance = {
+        debounce = 60,
+        throttle = 30,
+        fetching_timeout = 500,
+    },
+
+    -- 🎯 Completion Behavior
+    completion = {
+        completeopt = 'menu,menuone,noselect',
+        keyword_length = 1,
+    },
+
+    -- 🔍 Matching
+    matching = {
+        disallow_fuzzy_matching = false,
+        disallow_partial_matching = false,
+        disallow_prefix_unmatching = false,
+    },
+})
+
+-- 📝 COMMAND-LINE COMPLETION - SHOWS SUGGESTIONS, NO AUTO-FILL ON NAVIGATION
+cmp.setup.cmdline(':', {
+    mapping = {
+        -- Arrow keys to navigate WITHOUT auto-filling
+        ['<Down>'] = { c = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }) },
+        ['<Up>'] = { c = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }) },
+        ['<C-n>'] = { c = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }) },
+        ['<C-p>'] = { c = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }) },
+
+        -- TAB to fill selected item into cmdline (does NOT execute)
+        ['<Tab>'] = {
+            c = function()
+                if cmp.visible() then
+                    cmp.confirm({
+                        behavior = cmp.ConfirmBehavior.Insert,
+                        select = true
+                    })
+                else
+                    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n', true)
+                end
+            end,
+        },
+
+        -- ENTER fills selected item (does NOT execute command)
+        ['<CR>'] = {
+            c = function()
+                if cmp.visible() then
+                    cmp.confirm({
+                        behavior = cmp.ConfirmBehavior.Insert,
+                        select = false
+                    })
+                else
+                    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, true, true), 'n', true)
+                end
+            end,
+        },
+
+        -- ESC to close menu WITHOUT filling
+        ['<C-e>'] = { c = cmp.mapping.abort() },
+    },
+    sources = cmp.config.sources({
+        { name = 'path' },
+        { name = 'cmdline' }
+    }),
+    window = {
+        completion = {
+            border = "rounded",
+            scrollbar = true,
+        },
+    },
+})
+
+-- 📝 SEARCH COMPLETION - Same behavior
+cmp.setup.cmdline({ '/', '?' }, {
+    mapping = {
+        ['<Down>'] = {
+            c = function()
+                if cmp.visible() then
+                    cmp.select_next_item()
+                else
+                    cmp.complete()
+                end
+            end
+        },
+        ['<Up>'] = {
+            c = function()
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                else
+                    cmp.complete()
+                end
+            end
+        },
+        ['<Tab>'] = {
+            c = function()
+                if cmp.visible() then
+                    cmp.confirm({
+                        behavior = cmp.ConfirmBehavior.Insert,
+                        select = true
+                    })
+                else
+                    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n', true)
+                end
+            end,
+        },
+        ['<CR>'] = {
+            c = function()
+                if cmp.visible() then
+                    cmp.confirm({
+                        behavior = cmp.ConfirmBehavior.Insert,
+                        select = false
+                    })
+                else
+                    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, true, true), 'n', true)
+                end
+            end,
+        },
+    },
+    sources = {
+        { name = 'buffer', keyword_length = 2 }
+    },
+    window = {
+        completion = {
+            border = "rounded",
+            scrollbar = true,
+        },
+    },
+    completion = {
+        autocomplete = false,
+    },
+})
+
+-- 🎨 Theme-Adaptive Highlights
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+        local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
+        local normal_fg = vim.api.nvim_get_hl(0, { name = "Normal" }).fg
+
+        vim.api.nvim_set_hl(0, "Pmenu", { bg = normal_bg, fg = normal_fg })
+        vim.api.nvim_set_hl(0, "PmenuBorder", { link = "FloatBorder" })
+        vim.api.nvim_set_hl(0, "PmenuSel", { link = "CursorLine" })
+        vim.api.nvim_set_hl(0, "PmenuThumb", { link = "PmenuSbar" })
+
+        vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { link = "Search" })
+        vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "Search" })
+        vim.api.nvim_set_hl(0, "CmpItemKindFunction", { link = "Function" })
+        vim.api.nvim_set_hl(0, "CmpItemKindMethod", { link = "Function" })
+        vim.api.nvim_set_hl(0, "CmpItemKindVariable", { link = "Variable" })
+        vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { link = "Keyword" })
+        vim.api.nvim_set_hl(0, "CmpItemKindClass", { link = "Type" })
+        vim.api.nvim_set_hl(0, "CmpItemKindInterface", { link = "Type" })
+        vim.api.nvim_set_hl(0, "CmpItemKindText", { link = "String" })
+        vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { link = "Special" })
     end,
 })
 
--- Command-line completion for '/' and '?'
-cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline({
-        ['<Up>'] = { c = cmp.mapping.select_next_item() },
-        ['<Down>'] = { c = cmp.mapping.select_prev_item() },
-        ['<Tab>'] = { c = cmp.mapping.select_prev_item() },
-        ['<S-Tab>'] = { c = cmp.mapping.select_next_item() },
-        ['<CR>'] = { c = cmp.mapping.confirm({ select = false }) },
-    }),
-    sources = {
-        { name = 'buffer', max_item_count = 200 }
-    },
-    view = {
-        entries = { name = 'custom' }
-    },
-    window = {
-        completion = {
-            border = 'rounded',
-            scrollbar = true,
-            max_height = 5,
-        },
-    },
-    performance = {
-        max_view_entries = 200,
-    },
+vim.cmd("doautocmd ColorScheme")
+
+-- 🔥 FORCE x Number of ITEMS IN EDITOR & IN CMDLINE
+vim.opt.pumheight = 6 -- Default for insert mode (text editor)
+
+-- Override for cmdline mode
+vim.api.nvim_create_autocmd("CmdlineEnter", {
+    callback = function()
+        vim.opt.pumheight = 6 -- 5 items in command mode
+    end,
 })
 
--- Command-line completion for ':'
-cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline({
-        ['<Up>'] = { c = cmp.mapping.select_next_item() },
-        ['<Down>'] = { c = cmp.mapping.select_prev_item() },
-        ['<Tab>'] = { c = cmp.mapping.select_prev_item() },
-        ['<S-Tab>'] = { c = cmp.mapping.select_next_item() },
-        ['<CR>'] = { c = cmp.mapping.confirm({ select = false }) },
-    }),
-    sources = cmp.config.sources({
-        { name = 'path', max_item_count = 200 }
-    }, {
-        { name = 'cmdline', max_item_count = 200 }
-    }),
-    view = {
-        entries = { name = 'custom' }
-    },
-    window = {
-        completion = {
-            border = 'rounded',
-            scrollbar = true,
-            max_height = 5,
-        },
-    },
-    performance = {
-        max_view_entries = 200,
-    },
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+    callback = function()
+        vim.opt.pumheight = 6 -- Back to 4 items in editor
+    end,
 })
-
--- LSP auto-completion setup with auto-pairs support
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
--- Example LSP setup (adjust for your LSP servers)
--- require('lspconfig').clangd.setup({ capabilities = capabilities })
--- require('lspconfig').lua_ls.setup({ capabilities = capabilities })
