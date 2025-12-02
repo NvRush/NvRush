@@ -16,11 +16,9 @@ luasnip.config.set_config({
 
 -- Get the snippets path
 local snippet_path = vim.fn.stdpath("config") .. "/lua/user/snippets"
-vim.notify("📁 Looking for snippets in: " .. snippet_path)
 
 -- Check if directory exists
 if vim.fn.isdirectory(snippet_path) == 0 then
-    vim.notify("❌ Snippets directory not found: " .. snippet_path, vim.log.levels.ERROR)
     return
 end
 
@@ -29,7 +27,6 @@ require("luasnip.loaders.from_vscode").lazy_load({
     paths = { snippet_path }
 })
 
-vim.notify("📝 Snippets loaded from: " .. snippet_path)
 
 -- Simple keymaps that WILL work
 vim.keymap.set({ "i" }, "<C-k>", function()
@@ -77,5 +74,3 @@ vim.api.nvim_create_user_command("SnippetDebug", function()
         print("❌ NO SNIPPETS FOUND for filetype: " .. ft)
     end
 end, {})
-
-vim.notify("✅ LuaSnip config complete. Type :SnippetDebug to check snippets")

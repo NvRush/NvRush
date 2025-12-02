@@ -197,8 +197,8 @@ require("lazy").setup({
     },
 
     checker = {
-        enabled = true,   -- Keep auto-check enabled
-        notify = true,    -- Keep notifications
+        enabled = false,  -- Not needed for Codeotus
+        notify = false,   -- Keep notifications off
         frequency = 3600, -- Check every hour
     },
 

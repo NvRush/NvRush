@@ -119,124 +119,139 @@ wk.add({
     -- ===============
     -- a/A Group
     -- ===============
-    { "<leader>a",    group = "Reserved : For Harpoon Add" },
-    { "<leader>aA",   group = "A Subgroup" },
-
-
-    -- FIXED:
-
+    -- WARN: Let it be single
+    { "<leader>a",    group = "Harpoon" },
     -- ===============
     -- B/b Group
     -- ===============
-    { "<leader>b",    group = "b/B Group" },
-    { "<leader>b",    group = "B Subgroup" },
-    { "<leader>bd",   "<Cmd>bdelete<CR>",                        desc = "Delete Current" },
-    { "<leader>bn",   "<Cmd>bnext<CR>",                          desc = "Next" },
-    { "<leader>bp",   "<Cmd>bprevious<CR>",                      desc = "Previous" },
-    { "<leader>bl",   "<Cmd>blast<CR>",                          desc = "Last" },
-    { "<leader>bs",   "<Cmd>w<CR>",                              desc = "Save" },
-    { "<leader>bw",   "<Cmd>bwipeout<CR>",                       desc = "Wipeout" },
-    { "<leader>bi",   "<Cmd>IBLToggle<CR>",                      desc = "Toggle IBL" },
+    { "<leader>b",    group = "Buffers" },
+    { "<leader>bb",   group = "Buffers" },
+    { "<leader>bbn",  "<Cmd>BufferLineCycleNext<CR>",            desc = "Next Buffer" },
+    { "<leader>bbs",  "<Cmd>w<CR>",                              desc = "Save" },
+    { "<leader>bbc",  "<Cmd>%d<CR>",                             desc = "Clean current buffer data" },
+    { "<leader>bbp",  "<Cmd>BufferLineCyclePrev<CR>",            desc = "Previous Buffer" },
+    { "<leader>bbd",  "<Cmd>bdelete<CR>",                        desc = "Delete Current Buffer" },
+    { "<leader>bbl",  "<Cmd>Telescope buffers<CR>",              desc = "List Buffers (Picker)" },
 
 
-    -- ===============
-    -- C/c Group
-    -- ===============
-    { "<leader>c",    group = "c/C Group" },
-    { "<leader>c",    group = "C Subgroup" },
-    { "<leader>cr",   "<Cmd>source $MYVIMRC<CR>",                desc = "Reload Config" },
-    { "<leader>cR",   "<Cmd>LspRestart<CR>",                     desc = "Restart LSP" },
-    { "<leader>cp",   "<Cmd>Lazy<CR>",                           desc = "Plugin Manager" },
-    { "<leader>cP",   "<Cmd>Lazy profile<CR>",                   desc = "Profile Plugins" },
-    { "<leader>cu",   "<Cmd>Lazy update<CR>",                    desc = "Update Plugins" },
-    { "<leader>cU",   "<Cmd>Lazy update --wait<CR>",             desc = "Update Plugins (Wait)" },
-    { "<leader>cw",   "<Cmd>pwd<CR>",                            desc = "Working Directory" },
+    -- Commands
+    { "<leader>c",    group = "Commands" },
+    { "<leader>cs",   "<Cmd>wa<CR>",                             desc = "Save All" },
+    { "<leader>cS",   "<Cmd>wall<CR>",                           desc = "Force Save All" },
+    { "<leader>cq",   "<Cmd>wa<CR>",                             desc = "Save All" },
+    { "<leader>cQ",   "<Cmd>wall<CR>",                           desc = "Force Save All" },
+
+    -- File Operations
+    { "<leader>cf",   group = "File" },
+    { "<leader>cfr",  "<Cmd>edit!<CR>",                          desc = "Reload Buffer" },
+    { "<leader>cfn",  "<Cmd>noa w<CR>",                          desc = "Save Without Format" },
+    { "<leader>cfe",  "<Cmd>!chmod +x %<CR>",                    desc = "Make Executable" },
+    { "<leader>cfw",  "<Cmd>pwd<CR>",                            desc = "Show Directory" },
+    { "<leader>cff",  "<Cmd>Format<CR>",                         desc = "Format Buffer" },
+    { "<leader>cfx",  [[<Cmd>%s/\s\+$//e<CR>]],                  desc = "Trim Whitespace" },
+    { "<leader>cft",  "<Cmd>retab<CR>",                          desc = "Fix Tabs/Spaces" },
+
+    -- Window Management
+    { "<leader>cw",   group = "Window" },
+    { "<leader>cwo",  "<Cmd>only<CR>",                           desc = "Close Others" },
+    { "<leader>cw=",  "<Cmd>resize | vertical resize<CR>",       desc = "Equalize Windows" },
+    { "<leader>cwt",  "<Cmd>tabnew<CR>",                         desc = "New Tab" },
+
+    -- Toggle Options
+    { "<leader>ct",   group = "Toggle" },
+    { "<leader>ctn",  "<Cmd>set number!<CR>",                    desc = "Line Numbers" },
+    { "<leader>cti",  "<Cmd>set list!<CR>",                      desc = "Invisibles" },
+    { "<leader>ctp",  "<Cmd>set paste!<CR>",                     desc = "Paste Mode" },
+    { "<leader>ctl",  "<Cmd>set cursorline!<CR>",                desc = "Cursor Line" },
+    { "<leader>ctc",  "<Cmd>set cursorcolumn!<CR>",              desc = "Cursor Column" },
+    { "<leader>ctm",  "<Cmd>set mouse!<CR>",                     desc = "Mouse" },
+    { "<leader>cth",  "<Cmd>noh<CR>",                            desc = "Clear Highlight" },
+
+    -- Quick Actions
+    { "<leader>cq",   "<Cmd>copen<CR>",                          desc = "Quickfix List" },
+    { "<leader>cz",   "zE",                                      desc = "Rebuild Folds" },
 
     -- ===============
     -- D/d Group
     -- ===============
-    { "<leader>d",    group = "d/D Group" },
-    { "<leader>d",    group = "D Subgroup" },
+    { "<leader>d",    group = "Diagonastics" },
     { "<leader>dt",   "<Cmd>Trouble diagnostics toggle<CR>",     desc = "Toggle Trouble" },
     { "<leader>dr",   "<Cmd>Trouble diagnostics<CR>",            desc = "Diagnostics Report" },
     { "<leader>dn",   "<Cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
     { "<leader>dp",   "<Cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "Previous Diagnostic" },
 
     -- E - File Explorer
-    { "<leader>e",    group = "e/E Group" },
-    { "<leader>eE",   group = "E Subroup" },
-    { "<leader>eT",   group = "NvimTree Subroup" },
-    { "<leader>eTn",  "<Cmd>NvimTreeToggle<CR>",                 desc = "Explorer" },
-    { "<leader>e",    "<Cmd>NvimTreeRefresh<CR>",                desc = "Refresh Explorer" },
+    -- WARN: Let it be single
+    { "<leader>e",    "<Cmd>NvimTreeToggle<CR>",                 desc = "Explorer" },
 
     -- ===============
     -- T Group
     -- ===============
-    { "<leader>t",    group = "t/T Group" },
-    { "<leader>tt",   "<Cmd>Trouble diagnostics toggle<CR>",     desc = "Toggle Diagnostics" },
-    { "<leader>td",   "<Cmd>Trouble diagnostics<CR>",            desc = "Diagnostics" },
-    { "<leader>tq",   "<Cmd>Trouble quickfix toggle<CR>",        desc = "Quickfix" },
-    { "<leader>tl",   "<Cmd>Trouble loclist toggle<CR>",         desc = "Location List" },
-    { "<leader>ts",   "<Cmd>Trouble symbols toggle<CR>",         desc = "Symbols" },
+    { "<leader>t",    group = "Telescope" },
+    { "<leader>td",   group = "Trouble" },
+    { "<leader>tdq",  "<Cmd>Trouble quickfix toggle<CR>",        desc = "Quickfix" },
+    { "<leader>tdl",  "<Cmd>Trouble loclist toggle<CR>",         desc = "Location List" },
+    { "<leader>tds",  "<Cmd>Trouble symbols toggle<CR>",         desc = "Symbols" },
 
-    { "<leader>tf",   group = "Telescope Cmds" },
+    -- Telescope LSP (nested)
+    { "<leader>tdr",  "<cmd>Telescope lsp_references<cr>",       desc = "LSP References" },
+    { "<leader>tdd",  "<cmd>Telescope lsp_definitions<cr>",      desc = "LSP Definitions" },
+
+    -- Telescope General
+    { "<leader>tf",   group = "Files" },
+    { "<leader>tff",  "<cmd>Telescope find_files<cr>",           desc = "Find files" },
+    { "<leader>tfc",  "<cmd>Telescope commands<cr>",             desc = "Telescope Commands" },
+    { "<leader>tfb",  "<cmd>Telescope file_browser<cr>",         desc = "File browser" },
+    { "<leader>tfg",  "<cmd>Telescope live_grep<cr>",            desc = "Live grep" },
+    { "<leader>tfb",  "<cmd>Telescope buffers<cr>",              desc = "Buffers" },
+    { "<leader>tfo",  "<cmd>Telescope oldfiles<cr>",             desc = "Recent files" },
+    { "<leader>tfk",  "<cmd>Telescope keymaps<cr>",              desc = "Keymaps" },
     { "<leader>tft",  "<Cmd>Telescope colorscheme<CR>",          desc = "Themes" },
     { "<leader>tfn",  "<Cmd>enew<CR>",                           desc = "New File" },
-    { "<leader>tfr",  "<Cmd>Telescope oldfiles<CR>",             desc = "Recent Files" },
-
-    { "<leader>tfh",  group = "H Series" },
+    { "<leader>tfh",  group = "History Search" },
     { "<leader>tfhs", "<Cmd>Telescope search_history<CR>",       desc = "Search" },
     { "<leader>tfhc", "<Cmd>Telescope command_history<CR>",      desc = "Command" },
 
+    -- Telescope Git (nested)
+    { "<leader>tG",   group = "Git" },
+    { "<leader>tGs",  "<cmd>Telescope git_status<cr>",           desc = "Git status" },
+    { "<leader>tGc",  "<cmd>Telescope git_commits<cr>",          desc = "Git commits" },
+    { "<leader>tGb",  "<cmd>Telescope git_branches<cr>",         desc = "Git branches" },
+
+    { "<leader>tg",   group = "Toggle" },
+    { "<leader>tgi",  "<Cmd>IBLToggle<CR>",                      desc = "Toggle IBL" },
+    { "<leader>tgn",  "<Cmd>set number!<CR>",                    desc = "Line Numbers" },
+    { "<leader>tgr",  "<Cmd>set relativenumber!<CR>",            desc = "Relative Numbers" },
+    { "<leader>tgw",  "<Cmd>set wrap!<CR>",                      desc = "Word Wrap" },
+    { "<leader>tgs",  "<Cmd>set spell!<CR>",                     desc = "Spell Check" },
+    { "<leader>tgl",  "<Cmd>set list!<CR>",                      desc = "List Chars" },
+    { "<leader>tgc",  "<Cmd>set cursorline!<CR>",                desc = "Cursor Line" },
+    { "<leader>tgh",  "<Cmd>set hlsearch!<CR>",                  desc = "Highlight Search" },
+
+
     -- ===============
-    -- G Group
+    -- Git
     -- ===============
-    -- G - Git (reserved for git operations)
     { "<leader>g",    group = "Git" },
     -- ===============
-    -- G Group
+    -- Help
     -- ===============
 
-    -- H - Help
     { "<leader>h",    group = "Help" },
     { "<leader>hh",   "<Cmd>Telescope help_tags<CR>",            desc = "Help Tags" },
     { "<leader>hm",   "<Cmd>Telescope man_pages<CR>",            desc = "Man Pages" },
     { "<leader>hk",   "<Cmd>Telescope keymaps<CR>",              desc = "Keymaps" },
     { "<leader>hc",   "<Cmd>Telescope commands<CR>",             desc = "Commands" },
     -- ===============
-    -- G Group
-    -- ===============
-
-    -- I - Insert (reserved)
-    { "<leader>i",    group = "Insert" },
-    -- ===============
-    -- G Group
-    -- ===============
-
-    -- J - Jump (reserved)
-    { "<leader>j",    group = "Jump" },
-    -- ===============
-    -- G Group
-    -- ===============
-
-    -- K - (reserved)
-    { "<leader>k",    group = "Misc" },
-    -- ===============
-    -- G Group
-    -- ===============
-
-    -- L - LSP
-    -- ===============
-    -- G Group
+    -- LSP
     -- ===============
     { "<leader>l",    group = "LSP" },
     { "<leader>lr",   "<Cmd>LspRestart<CR>",                     desc = "Restart" },
     { "<leader>li",   "<Cmd>LspInfo<CR>",                        desc = "Info" },
     { "<leader>ll",   "<Cmd>LspLog<CR>",                         desc = "Log" },
 
-    -- M - Messages/Notifications
     -- ===============
-    -- G Group
+    -- Messages/Notifications
     -- ===============
     { "<leader>m",    group = "Messages" },
     { "<leader>mm",   "<Cmd>messages<CR>",                       desc = "Show Messages" },
@@ -249,106 +264,92 @@ wk.add({
     { "<leader>mpa",  '"+p',                                     desc = "After Cursor" },
     { "<leader>mpb",  '"+P',                                     desc = "Before Cursor" },
 
-    -- N - (reserved)
-    -- ===============
-    -- G Group
-    -- ===============
-    { "<leader>n",    group = "New" },
-    { "<leader>nf",   "<Cmd>enew<CR>",                           desc = "New File" },
 
-    -- O - (reserved)
     -- ===============
-    -- G Group
-    -- ===============
-    { "<leader>o",    group = "Open" },
-
-    -- P - (reserved)
-    -- ===============
-    -- G Group
+    -- Project
     -- ===============
     { "<leader>p",    group = "Project" },
 
-    -- Q - Quit
     -- ===============
-    -- G Group
+    -- Quit
     -- ===============
-    { "<leader>q",    group = "Quit" },
+    -- Quit & Save
+    { "<leader>q",    group = "Quit & Save" },
+
+    -- Quick saves
+    { "<leader>qs",   "<Cmd>w<CR>",                              desc = "Save" },
+    { "<leader>qS",   "<Cmd>wa<CR>",                             desc = "Save All" },
+    { "<leader>qf",   "<Cmd>w!<CR>",                             desc = "Force Save" },
+    { "<leader>qF",   "<Cmd>wall<CR>",                           desc = "Force Save All" },
+
+    -- Quit current
     { "<leader>qq",   "<Cmd>q<CR>",                              desc = "Quit" },
-    { "<leader>qf",   "<Cmd>q!<CR>",                             desc = "Force Quit" },
+    { "<leader>qQ",   "<Cmd>q!<CR>",                             desc = "Force Quit" },
+
+    -- Quit all
     { "<leader>qa",   "<Cmd>qa<CR>",                             desc = "Quit All" },
-    { "<leader>qF",   "<Cmd>qa!<CR>",                            desc = "Force Quit All" },
+    { "<leader>qA",   "<Cmd>qa!<CR>",                            desc = "Force Quit All" },
+
+    -- Save and quit
     { "<leader>qw",   "<Cmd>wq<CR>",                             desc = "Save & Quit" },
-    { "<leader>qW",   "<Cmd>wqa<CR>",                            desc = "Save All & Quit" },
-
-    -- R - Replace/Substitute
+    { "<leader>qW",   "<Cmd>wq!<CR>",                            desc = "Force Save & Quit" },
+    { "<leader>qx",   "<Cmd>wqa<CR>",                            desc = "Save All & Quit" },
+    { "<leader>qX",   "<Cmd>wqa!<CR>",                           desc = "Force Save All & Quit" },
     -- ===============
-    -- G Group
+    -- Replace/Substitute
     -- ===============
+    -- { "<leader>r",    group = "Replace" },
+    -- { "<leader>ra",   ":lua SubstituteAll()<CR>",                desc = "Whole File" },
+    -- { "<leader>rm",   ":lua SubstituteMatchingLines()<CR>",      desc = "Matching Lines" },
+    -- { "<leader>rr",   ":lua SubstituteRange()<CR>",              desc = "Range" },
+    -- { "<leader>re",   "<Cmd>NvimTreeRefresh<CR>",                desc = "Refresh Explorer" },
     { "<leader>r",    group = "Replace" },
-    { "<leader>ra",   ":lua SubstituteAll()<CR>",                desc = "Whole File" },
-    { "<leader>rm",   ":lua SubstituteMatchingLines()<CR>",      desc = "Matching Lines" },
-    { "<leader>rr",   ":lua SubstituteRange()<CR>",              desc = "Range" },
-    { "<leader>re",   "<Cmd>NvimTreeRefresh<CR>",                desc = "Refresh Explorer" },
 
-    -- S - Save (Quick Access)
-    -- ===============
-    -- G Group
-    -- ===============
-    { "<leader>S",    group = "Session" },
+    -- Substitute operations
+    { "<leader>rs",   group = "Substitute" },
+    { "<leader>rsa",  ":lua SubstituteAll()<CR>",                desc = "Whole File" },
+    { "<leader>rsm",  ":lua SubstituteMatchingLines()<CR>",      desc = "Matching Lines" },
+    { "<leader>rsr",  ":lua SubstituteRange()<CR>",              desc = "Range" },
+    { "<leader>rsl",  ":s/",                                     desc = "Current Line" },
+    { "<leader>rsv",  ":s/\\%V",                                 desc = "Visual Selection" },
 
-    { "<leader>Sv",   "<Cmd>SessionSave<CR>",                    desc = "Save Session" },
-    { "<leader>Sr",   "<Cmd>SessionRestore<CR>",                 desc = "Restore Session" },
-    { "<leader>Ss",   "<Cmd>SessionSearch<CR>",                  desc = "Search Session" },
+    -- Quick replace (no submenu)
+    { "<leader>rr",   ":lua SubstituteRange()<CR>",              desc = "Replace Range" },
+    { "<leader>ra",   ":lua SubstituteAll()<CR>",                desc = "Replace All" },
 
-
-    -- ===============
-    -- G Group
-    -- ===============
-    { "<leader>u",    group = "u/U Group" },
-    { "<leader>un",   "<Cmd>set number!<CR>",                    desc = "Line Numbers" },
-    { "<leader>ur",   "<Cmd>set relativenumber!<CR>",            desc = "Relative Numbers" },
-    { "<leader>uw",   "<Cmd>set wrap!<CR>",                      desc = "Word Wrap" },
-    { "<leader>us",   "<Cmd>set spell!<CR>",                     desc = "Spell Check" },
-    { "<leader>ul",   "<Cmd>set list!<CR>",                      desc = "List Chars" },
-    { "<leader>uc",   "<Cmd>set cursorline!<CR>",                desc = "Cursor Line" },
-    { "<leader>uh",   "<Cmd>set hlsearch!<CR>",                  desc = "Highlight Search" },
+    -- Refresh operations
+    { "<leader>re",   group = "Refresh" },
+    { "<leader>ree",  "<Cmd>NvimTreeRefresh<CR>",                desc = "Explorer" },
+    { "<leader>reb",  "<Cmd>edit!<CR>",                          desc = "Buffer" },
+    { "<leader>res",  "<Cmd>source %<CR>",                       desc = "Source File" },
 
     -- ===============
-    -- G Group
+    -- Sessions --> Refrence to /path/to/IdeBatch/Sessions.lua
     -- ===============
-    { "<leader>v",    group = "v/V Group" },
-
+    { "<leader>s",    group = "Session" },
     -- ===============
-    -- w/W Group
+    -- Undo  --> Refrence to /path/to/IdeBatch/undotree.lua
     -- ===============
-    { "<leader>w",    group = "w/W Group" },
-    { "<leader>wh",   "<C-w>h",                                  desc = "Go Left" },
-    { "<leader>wj",   "<C-w>j",                                  desc = "Go Down" },
-    { "<leader>wk",   "<C-w>k",                                  desc = "Go Up" },
-    { "<leader>wl",   "<C-w>l",                                  desc = "Go Right" },
-    { "<leader>ws",   "<C-w>s",                                  desc = "Split Below" },
-    { "<leader>wv",   "<C-w>v",                                  desc = "Split Right" },
-    { "<leader>wq",   "<C-w>q",                                  desc = "Close" },
-    { "<leader>wo",   "<C-w>o",                                  desc = "Close Others" },
-    { "<leader>w=",   "<C-w>=",                                  desc = "Equal Size" },
-
+    { "<leader>u",    group = "Undo Tree" },
     -- ===============
-    -- G Group
+    -- Visual Mode Group
     -- ===============
-    { "<leader>x",    group = "x/X Group" },
-
+    { "<leader>v",    group = "Visual" },
     -- ===============
-    -- Y/y Group
+    -- Save
     -- ===============
-    { "<leader>y",    group = "y/Y Group" },
+    { "<leader>w",    group = "Save" },
+    { "<leader>ws",   "<cmd>w<cr>",                              desc = "Save" },
+    { "<leader>wa",   "<cmd>wall<cr>",                           desc = "Save all" },
+    { "<leader>wq",   "<cmd>q<cr>",                              desc = "Quit" },
+    { "<leader>we",   "<cmd>qall<cr>",                           desc = "Quit" },
+    -- ===============
+    -- Yank
+    -- ===============
+    { "<leader>y",    group = "Copy" },
     { "<leader>ya",   "<Cmd>%y+<CR>",                            desc = "Yank All" },
     { "<leader>yp",   "<Cmd>let @+ = expand('%:p')<CR>",         desc = "Yank File Path" },
     { "<leader>yf",   "<Cmd>let @+ = expand('%:t')<CR>",         desc = "Yank File Name" },
-
-    -- ===============
-    -- Z/z Group
-    -- ===============
-    { "<leader>z",    group = "z/Z Group" },
 })
 
 -- ============================================

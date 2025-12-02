@@ -138,20 +138,3 @@ telescope.setup({
 -- Install telescope-fzf-native.nvim and uncomment:
 telescope.load_extension("fzf")
 telescope.load_extension("file_browser")
-
-vim.keymap.set('n', '<leader>tf', "<cmd>Telescope Commands<cr>", { desc = 'Telescope Commands' })
-vim.keymap.set('n', '<leader>tff', '<cmd>Telescope find_files<cr>', { desc = 'Find files' })
-vim.keymap.set('n', '<leader>tfs', '<cmd>Telescope file_browser<cr>', { desc = 'Keymaps' })
-vim.keymap.set('n', '<leader>tfg', '<cmd>Telescope live_grep<cr>', { desc = 'Live grep' })
-vim.keymap.set('n', '<leader>tfb', '<cmd>Telescope buffers<cr>', { desc = 'Buffers' })
-vim.keymap.set('n', '<leader>tfo', '<cmd>Telescope oldfiles<cr>', { desc = 'Recent files' })
-vim.keymap.set('n', '<leader>tfk', '<cmd>Telescope keymaps<cr>', { desc = 'Keymaps' })
-
--- Nested: Telescope Git (<leader>tg already used, so use <leader>tG or <leader>tgX)
-vim.keymap.set('n', '<leader>tfgs', '<cmd>Telescope git_status<cr>', { desc = 'Git status' })
-vim.keymap.set('n', '<leader>tfgc', '<cmd>Telescope git_commits<cr>', { desc = 'Git commits' })
-vim.keymap.set('n', '<leader>tfgb', '<cmd>Telescope git_branches<cr>', { desc = 'Git branches' })
-
--- Nested: Telescope LSP (<leader>tl)
-vim.keymap.set('n', '<leader>tflr', '<cmd>Telescope lsp_references<cr>', { desc = 'References' })
-vim.keymap.set('n', '<leader>tfld', '<cmd>Telescope lsp_definitions<cr>', { desc = 'Definitions' })

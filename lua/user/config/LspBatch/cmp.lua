@@ -171,7 +171,7 @@ cmp.setup({
     },
 })
 
--- 📝 COMMAND-LINE COMPLETION - SHOWS SUGGESTIONS, NO AUTO-FILL ON NAVIGATION
+-- 📝 COMMAND-LINE COMPLETION - FIXED ENTER BEHAVIOR
 cmp.setup.cmdline(':', {
     mapping = {
         -- Arrow keys to navigate WITHOUT auto-filling
@@ -194,15 +194,18 @@ cmp.setup.cmdline(':', {
             end,
         },
 
-        -- ENTER fills selected item (does NOT execute command)
+        -- ENTER: if item selected, fill it; otherwise execute command immediately
         ['<CR>'] = {
             c = function()
-                if cmp.visible() then
+                if cmp.visible() and cmp.get_selected_entry() then
+                    -- Item is selected: insert it into cmdline
                     cmp.confirm({
                         behavior = cmp.ConfirmBehavior.Insert,
                         select = false
                     })
                 else
+                    -- No item selected or menu closed: execute command
+                    cmp.abort()
                     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, true, true), 'n', true)
                 end
             end,
@@ -210,6 +213,7 @@ cmp.setup.cmdline(':', {
 
         -- ESC to close menu WITHOUT filling
         ['<C-e>'] = { c = cmp.mapping.abort() },
+        ['<Esc>'] = { c = cmp.mapping.abort() },
     },
     sources = cmp.config.sources({
         { name = 'path' },
@@ -223,7 +227,7 @@ cmp.setup.cmdline(':', {
     },
 })
 
--- 📝 SEARCH COMPLETION - Same behavior
+-- 📝 SEARCH COMPLETION - Same fix
 cmp.setup.cmdline({ '/', '?' }, {
     mapping = {
         ['<Down>'] = {
@@ -258,16 +262,21 @@ cmp.setup.cmdline({ '/', '?' }, {
         },
         ['<CR>'] = {
             c = function()
-                if cmp.visible() then
+                if cmp.visible() and cmp.get_selected_entry() then
+                    -- Item is selected: insert it
                     cmp.confirm({
                         behavior = cmp.ConfirmBehavior.Insert,
                         select = false
                     })
                 else
+                    -- No item selected: execute search
+                    cmp.abort()
                     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, true, true), 'n', true)
                 end
             end,
         },
+        ['<C-e>'] = { c = cmp.mapping.abort() },
+        ['<Esc>'] = { c = cmp.mapping.abort() },
     },
     sources = {
         { name = 'buffer', keyword_length = 2 }
