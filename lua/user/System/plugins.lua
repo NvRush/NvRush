@@ -79,11 +79,11 @@ require("lazy").setup({
         { "stevearc/dressing.nvim",              version = "v3.1.1", },
         { "beauwilliams/focus.nvim",             version = "v1.0.2", },
         { "rcarriga/nvim-notify",                version = "v3.15.0", },
-        { "nvim-treesitter/nvim-treesitter",     build = ":TSUpdate",                    branch = "main",                         version = "v0.10.0", },
+        { "nvim-treesitter/nvim-treesitter",     build = ":TSUpdate",                    branch = "main" },
         { "lukas-reineke/indent-blankline.nvim", main = "ibl",                           event = { "BufReadPost", "BufNewFile" }, version = "v3.9.0", },
         { "akinsho/bufferline.nvim",             version = "v4.9.1",                     event = "VeryLazy", },
         { "nvim-tree/nvim-tree.lua",             version = "v1.14.0", },
-        { "hrsh7th/nvim-cmp", }, -- :NOTE: Let it be as it is !
+        { "hrsh7th/nvim-cmp", },
         { "windwp/nvim-autopairs",               event = "InsertEnter",                  version = "0.10.0" },
         { "kylechui/nvim-surround",              event = "VeryLazy",                     version = "v3.1.7",                      config = true },
         { "stevearc/conform.nvim",               event = "BufWritePre" },
@@ -120,7 +120,7 @@ require("lazy").setup({
         -- =========================
         { "folke/which-key.nvim",                event = "VeryLazy",                     version = "v3.17.0" },
         { "karb94/neoscroll.nvim",               config = true,                          version = "0.2.0" },
-        { "mg979/vim-visual-multi",              branch = "master",                      version = "v0.5.8" },
+        { "mg979/vim-visual-multi",              branch = "master", },
         { "numToStr/Comment.nvim",               version = "v0.8.0" },
         { "kdheepak/lazygit.nvim" },
         { "echasnovski/mini.nvim",               version = "*" },
@@ -134,7 +134,7 @@ require("lazy").setup({
         -- =========================
         { "ThePrimeagen/harpoon",                branch = "harpoon2" },
         { "nvim-telescope/telescope.nvim",       tag = "0.1.5" },
-        { "nvim-neo-tree/neo-tree.nvim", },
+        { "nvim-neo-tree/neo-tree.nvim",         branch = "main" },
         { "leath-dub/snipe.nvim" },
         { "otavioschwanck/arrow.nvim", },
         {

@@ -108,9 +108,13 @@ safe_require("user.config.LspBatch.lsp")
 -- 5. LspBatch Setup
 -- ============= ============= ============= =============
 
--- safe_require("user.config.LspBatch.cmp") -- Comment this for blink completion
+safe_require("user.config.LspBatch.cmp") -- Comment this for blink completion
+
+--[[
 safe_require("user.config.LspBatch.cmd_cmp")  -- Comment this if using nvim completion
 safe_require("user.config.LspBatch.blinkCmp") -- Comment this if using nvim completion
+--]]
+
 safe_require("user.config.LspBatch.autopairs")
 safe_require("user.config.LspBatch.formatter")
 safe_require("user.config.LspBatch.luasnip")

@@ -45,12 +45,13 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- NOTE: For nvim-cmp Uncomment this :
--- pcall(function()
---     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
--- end)
-
+--
+pcall(function()
+    capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+end)
 -- NOTE: For blink-cmp Uncomment this :
-capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+--
+-- capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 -- ===============================
 -- 3. Default config
 -- ===============================

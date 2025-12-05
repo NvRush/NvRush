@@ -83,7 +83,7 @@ require('blink.cmp').setup({
 
         -- Menu configuration (adaptive for all screen sizes)
         menu = {
-            max_height = 15, -- Reasonable height for most screens
+            max_height = 10, -- Reasonable height for most screens
             min_width = 15,  -- Minimum width
 
             draw = {
@@ -132,7 +132,7 @@ require('blink.cmp').setup({
 
             window = {
                 min_width = 20,
-                max_width = 60, -- Works well on most screens
+                max_width = 80, -- Works well on most screens
                 max_height = 20,
                 border = 'rounded',
             },
@@ -140,7 +140,7 @@ require('blink.cmp').setup({
 
         -- Ghost text (shows completion inline)
         ghost_text = {
-            enabled = true,
+            enabled = false,
         },
     },
 
