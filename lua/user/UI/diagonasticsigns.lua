@@ -6,7 +6,7 @@ local diagnostics_state = {
     virtual_text = false,
     signs = true,
     underline = true,
-    auto_popup = true,
+    auto_popup = false, -- FIX 1: Changed to false by default
     update_in_insert = true,
 }
 
@@ -31,7 +31,7 @@ local function apply_diagnostic_config()
                 [vim.diagnostic.severity.ERROR] = "✘ ",
                 [vim.diagnostic.severity.WARN] = "⚠ ",
                 [vim.diagnostic.severity.HINT] = "󰌶 ",
-                [vim.diagnostic.severity.INFO] = " "
+                [vim.diagnostic.severity.INFO] = " "
             },
             numhl = {
                 [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
@@ -40,15 +40,6 @@ local function apply_diagnostic_config()
                 [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
             },
         } or false,
-        -- Floating window on cursor hover
-        float = {
-            focusable = false,
-            style = "minimal",
-            border = "rounded",
-            source = true,
-            header = "⚠ Diagnostic Report",
-            prefix = " ",
-        },
         -- Underline
         underline = diagnostics_state.underline,
     })
@@ -137,7 +128,7 @@ end
 
 -- Cycle through diagnostic modes (useful for quick switching)
 local diagnostic_modes = {
-    { name = "Full",    enabled = true,  virtual_text = false, signs = true,  underline = true,  auto_popup = true },
+    { name = "Full",    enabled = true,  virtual_text = false, signs = true,  underline = true,  auto_popup = false }, -- FIX 1: Changed to false
     { name = "Minimal", enabled = true,  virtual_text = false, signs = true,  underline = false, auto_popup = false },
     { name = "Silent",  enabled = true,  virtual_text = false, signs = false, underline = false, auto_popup = false },
     { name = "Off",     enabled = false, virtual_text = false, signs = false, underline = false, auto_popup = false },

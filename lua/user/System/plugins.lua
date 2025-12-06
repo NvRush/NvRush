@@ -108,24 +108,34 @@ require("lazy").setup({
         { "SmiteshP/nvim-navic",                 lazy = true },
 
         { "saghen/blink.cmp",                    version = "v1.8.0" },
+        {
+            "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+            config = function()
+                require("lsp_lines").setup()
+                vim.diagnostic.config({
+                    virtual_text = false,
+                    virtual_lines = { only_current_line = true },
+                })
+            end
+        },
 
         -- =========================
         -- Sessions & projects
         -- =========================
-        { "stevearc/resession.nvim",             version = "v1.2.1" },
+        { "stevearc/resession.nvim",       version = "v1.2.1" },
         { "ahmedkhalf/project.nvim" },
 
         -- =========================
         -- Daily usefull
         -- =========================
-        { "folke/which-key.nvim",                event = "VeryLazy",                     version = "v3.17.0" },
-        { "karb94/neoscroll.nvim",               config = true,                          version = "0.2.0" },
-        { "mg979/vim-visual-multi",              branch = "master", },
-        { "numToStr/Comment.nvim",               version = "v0.8.0" },
+        { "folke/which-key.nvim",          event = "VeryLazy", version = "v3.17.0" },
+        { "karb94/neoscroll.nvim",         config = true,      version = "0.2.0" },
+        { "mg979/vim-visual-multi",        branch = "master", },
+        { "numToStr/Comment.nvim",         version = "v0.8.0" },
         { "kdheepak/lazygit.nvim" },
-        { "echasnovski/mini.nvim",               version = "*" },
+        { "echasnovski/mini.nvim",         version = "*" },
         { "nvzone/showkeys" },
-        { "folke/flash.nvim",                    event = "VeryLazy",                     version = "v2.1.0" },
+        { "folke/flash.nvim",              event = "VeryLazy", version = "v2.1.0" },
         { "mbbill/undotree" },
         { "gbprod/yanky.nvim" },
         { "Pocco81/auto-save.nvim", },
@@ -134,9 +144,9 @@ require("lazy").setup({
         -- =========================
         -- File Search
         -- =========================
-        { "ThePrimeagen/harpoon",                branch = "harpoon2" },
-        { "nvim-telescope/telescope.nvim",       tag = "0.1.5" },
-        { "nvim-neo-tree/neo-tree.nvim",         branch = "main" },
+        { "ThePrimeagen/harpoon",          branch = "harpoon2" },
+        { "nvim-telescope/telescope.nvim", tag = "0.1.5" },
+        { "nvim-neo-tree/neo-tree.nvim",   branch = "main" },
         { "leath-dub/snipe.nvim" },
         { "otavioschwanck/arrow.nvim", },
         {

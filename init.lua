@@ -107,7 +107,7 @@ safe_require("user.config.LspBatch.lsp")
 -- ============= ============= ============= =============
 -- 5. LspBatch Setup
 -- ============= ============= ============= =============
-
+safe_require("user.config.LspBatch.lsp_lines")
 safe_require("user.config.LspBatch.cmp") -- Comment this for blink completion
 
 --[[
